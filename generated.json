@@ -1,0 +1,51 @@
+{
+    "employee": {
+        "model": "employee",
+        "modelId": "employeeId",
+        "models": "employees",
+        "modelComponent": "Employee",
+        "title": "Employee"
+    },
+    "timerecord": {
+        "model": "timerecord",
+        "modelId": "timerecordId",
+        "models": "timerecords",
+        "modelComponent": "Timerecord",
+        "title": "Timerecord"
+    },
+    "entry": {
+        "model": "entry",
+        "modelId": "entryId",
+        "models": "entries",
+        "modelComponent": "Entry",
+        "title": "Entry"
+    },
+    "branch": {
+        "model": "branch",
+        "modelId": "branchId",
+        "models": "branches",
+        "modelComponent": "Branch",
+        "title": "Branch"
+    },
+    "company": {
+        "model": "company",
+        "modelId": "companyId",
+        "models": "companies",
+        "modelComponent": "Company",
+        "title": "Company"
+    },
+    "department": {
+        "model": "department",
+        "modelId": "departmentId",
+        "models": "departments",
+        "modelComponent": "Department",
+        "title": "Department"
+    },
+    "product": {
+        "model": "product",
+        "modelId": "productId",
+        "models": "products",
+        "modelComponent": "Product",
+        "title": "Product"
+    }
+}
