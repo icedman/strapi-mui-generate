@@ -32,4 +32,7 @@ const registry = {
   'custom': CustomView
 }
 
-export { schema, registry };
+const validator = {};
+
+export { schema, registry, validator };
+
