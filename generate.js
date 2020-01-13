@@ -1,6 +1,7 @@
 const fs = require('fs');
 const hbs = require('handlebars');
 const path = require('path');
+const pluralize = require('pluralize');
 
 const config = require('./config.js');
 const dbModel = require('./model.js');
@@ -34,7 +35,7 @@ const capitalize = s => {
 
 // yargs
 let model = argv.model || argv.schema || process.argv[2];
-let modelPlural = argv.plural || model + 's';
+let modelPlural = argv.plural || pluralize(model, 2);
 let component = argv.component || capitalize(model);
 let outdir = argv.outdir || config.outputDir;
 

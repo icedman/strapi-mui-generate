@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default {
-  prefix: '/settings',
+  prefix: '/',
   routes: [
     {
       path: '/{{models}}',

@@ -1,6 +1,7 @@
 import React from 'react';
 import _schema from './schema.js';
 import merge from 'merge';
+import { isRequired } from 'common/validators';
 
 export function CustomView(props) {
   return (

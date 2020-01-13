@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import crud from 'common/crud';
 import cache from 'common/cache';
 import StateHelper from 'common/stateHelper';
-import { schema, registry as CustomComponentRegistry } from './custom';
+import { schema, registry as CustomComponentRegistry, validator } from './custom';
 
 import Toolbar from 'components/Toolbar';
 
@@ -61,6 +61,7 @@ const Detail = withRouter(props => {
   });
 
   fs.useState(state, setState);
+  fs.useValidator(validator);
 
   const fetchDetail = async () => {
     if (!{{model}}Id) {
