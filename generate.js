@@ -83,7 +83,8 @@ if (!schema || model === 'schema') {
 
         res.forEach(r => {
           let k = r.key.replace('plugin_content_manager_configuration_content_types::', '')
-          sch[k] = JSON.parse(r.value);
+          let kp = k.split('.')[1] : k
+          sch[kp] = JSON.parse(r.value)
         })
 
         // console.log(JSON.stringify(res, null, 4));
