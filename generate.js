@@ -82,8 +82,8 @@ if (!schema || model === 'schema') {
         let sch = {}
 
         res.forEach(r => {
-          let k = r.key.replace('plugin_content_manager_configuration_content_types::', '')
-          let kp = k.split('.')[1] : k
+          let k = r.key.replace('plugin_content_manager_configuration_content_types::', '');
+          let kp = k.split('.')[1] || k;
           sch[kp] = JSON.parse(r.value)
         })
 
@@ -140,6 +140,8 @@ const templates = {
     })
   )
 };
+
+console.log(templates.config);
 
 const context = {
   model: `${model}`,
