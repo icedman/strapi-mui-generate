@@ -185,6 +185,9 @@ const Detail = withRouter(props => {
   const editFields = [ ...schema.layouts.edit, [...(schema.layouts.editRelations || []).map(r => ({ name: r}))] ];
   const fieldsRendered = editFields.map(row => {
     return row.map(field => {
+      if (!schema.metadatas[field.name]) {
+        return {}
+      }
       let meta = schema.metadatas[field.name].edit;
       let attributes = schema.attributes[field.name] || { type: 'string' };
       let Component = FormInputRegistry[attributes.type];
@@ -259,7 +262,7 @@ const Detail = withRouter(props => {
         <CardContent>
         <Layout items={fieldsRendered}/>
         </CardContent>
-      <pre>{JSON.stringify(state, null, 4)}</pre>
+      <div id="StateDebug">{JSON.stringify(state, null, 4)}</div>
       </form>
     </MuiPickersUtilsProvider>
     </Card>
