@@ -12,6 +12,8 @@ import { makeStyles } from '@material-ui/styles';
 
 import { schema } from './custom';
 
+import debounce from 'debounce';
+
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import {
   Card,
@@ -52,12 +54,12 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const DataList = withRouter(props => {
+  const [filter, setFilter] = useState('')
   const [state, setState] = useState({
     data: [],
-    filter: '',
     length: 0,
     page: 0,
-    rowsPerPage: 15,
+    rowsPerPage: 15
   });
 
   const classes = useStyles();
@@ -70,7 +72,7 @@ const DataList = withRouter(props => {
 
     const $crud = crud('{{models}}');
 
-    if (state.filter.length > 1) {
+    if (filter.length > 1) {
       fields.forEach(field => {
         let meta = schema.metadatas[field].list;
         let attributes = schema.attributes[field] || {};
@@ -81,7 +83,7 @@ const DataList = withRouter(props => {
           return;
         }
         if (meta.searchable) {
-          params[`${field}_regex`] = state.filter;
+          params[`or:${field}_regex`] = filter;
         }
       });
     }
@@ -123,7 +125,7 @@ const DataList = withRouter(props => {
     fetchData();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [ state.filter, state.page, state.rowsPerPage ]);
+  }, [ filter, state.page, state.rowsPerPage ]);
 
   /*
   const actions = [
@@ -167,12 +169,9 @@ const DataList = withRouter(props => {
     }
   ];
 
-  const onSearch = (v) => {
-    setState({
-      ...state,
-      filter: v
-    })
-  }
+  const onSearch = debounce((v) => {
+    setFilter(v);
+  }, 250);
 
   const handlePageChange = (evt, p) => {
     setState({
