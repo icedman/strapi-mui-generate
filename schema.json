@@ -167,7 +167,6 @@
                 "name",
                 "address"
             ],
-            "editRelations": [],
             "edit": [
                 [
                     {
@@ -209,7 +208,8 @@
                         "size": 4
                     }
                 ]
-            ]
+            ],
+            "editRelations": []
         }
     },
     "branch": {
@@ -338,7 +338,6 @@
                 "name",
                 "address"
             ],
-            "editRelations": [],
             "edit": [
                 [
                     {
@@ -368,7 +367,8 @@
                         "size": 12
                     }
                 ]
-            ]
+            ],
+            "editRelations": []
         }
     },
     "department": {
@@ -455,7 +455,6 @@
                 "name",
                 "createdAt"
             ],
-            "editRelations": [],
             "edit": [
                 [
                     {
@@ -467,7 +466,8 @@
                         "size": 6
                     }
                 ]
-            ]
+            ],
+            "editRelations": []
         }
     },
     "employee": {
@@ -659,6 +659,21 @@
                     "sortable": false
                 }
             },
+            "branch": {
+                "edit": {
+                    "label": "Branch",
+                    "description": "",
+                    "placeholder": "",
+                    "visible": true,
+                    "editable": true,
+                    "mainField": "id"
+                },
+                "list": {
+                    "label": "Branch",
+                    "searchable": false,
+                    "sortable": false
+                }
+            },
             "createdAt": {
                 "edit": {
                     "label": "CreatedAt",
@@ -694,9 +709,6 @@
                 "employeeId",
                 "firstName",
                 "lastName"
-            ],
-            "editRelations": [
-                "department"
             ],
             "edit": [
                 [
@@ -757,6 +769,10 @@
                         "size": 6
                     }
                 ]
+            ],
+            "editRelations": [
+                "department",
+                "branch"
             ]
         }
     },
@@ -928,7 +944,6 @@
                 "status",
                 "branchCode"
             ],
-            "editRelations": [],
             "edit": [
                 [
                     {
@@ -974,7 +989,8 @@
                         "size": 4
                     }
                 ]
-            ]
+            ],
+            "editRelations": []
         }
     },
     "timerecord": {
@@ -1159,7 +1175,6 @@
                 "status",
                 "branchCode"
             ],
-            "editRelations": [],
             "edit": [
                 [
                     {
@@ -1211,7 +1226,8 @@
                         "size": 4
                     }
                 ]
-            ]
+            ],
+            "editRelations": []
         }
     },
     "product": {
@@ -1298,7 +1314,6 @@
                 "description",
                 "createdAt"
             ],
-            "editRelations": [],
             "edit": [
                 [
                     {
@@ -1310,10 +1325,11 @@
                         "size": 6
                     }
                 ]
-            ]
+            ],
+            "editRelations": []
         }
     },
-    "admin.administrator": {
+    "administrator": {
         "uid": "administrator",
         "source": "admin",
         "settings": {
@@ -1440,7 +1456,6 @@
                 "email",
                 "resetPasswordToken"
             ],
-            "editRelations": [],
             "edit": [
                 [
                     {
@@ -1468,10 +1483,11 @@
                         "size": 4
                     }
                 ]
-            ]
+            ],
+            "editRelations": []
         }
     },
-    "users-permissions.role": {
+    "role": {
         "uid": "role",
         "source": "users-permissions",
         "settings": {
@@ -1600,10 +1616,6 @@
                 "description",
                 "type"
             ],
-            "editRelations": [
-                "permissions",
-                "users"
-            ],
             "edit": [
                 [
                     {
@@ -1621,10 +1633,14 @@
                         "size": 6
                     }
                 ]
+            ],
+            "editRelations": [
+                "permissions",
+                "users"
             ]
         }
     },
-    "upload.file": {
+    "file": {
         "uid": "file",
         "source": "upload",
         "settings": {
@@ -1822,9 +1838,6 @@
                 "hash",
                 "sha256"
             ],
-            "editRelations": [
-                "related"
-            ],
             "edit": [
                 [
                     {
@@ -1872,10 +1885,13 @@
                         "size": 12
                     }
                 ]
+            ],
+            "editRelations": [
+                "related"
             ]
         }
     },
-    "users-permissions.permission": {
+    "permission": {
         "uid": "permission",
         "source": "users-permissions",
         "settings": {
@@ -2017,9 +2033,6 @@
                 "controller",
                 "action"
             ],
-            "editRelations": [
-                "role"
-            ],
             "edit": [
                 [
                     {
@@ -2047,10 +2060,13 @@
                         "size": 6
                     }
                 ]
+            ],
+            "editRelations": [
+                "role"
             ]
         }
     },
-    "users-permissions.user": {
+    "user": {
         "uid": "user",
         "source": "users-permissions",
         "settings": {
@@ -2220,9 +2236,6 @@
                 "email",
                 "provider"
             ],
-            "editRelations": [
-                "role"
-            ],
             "edit": [
                 [
                     {
@@ -2260,6 +2273,9 @@
                         "size": 4
                     }
                 ]
+            ],
+            "editRelations": [
+                "role"
             ]
         }
     }

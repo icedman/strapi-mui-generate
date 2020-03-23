@@ -2,6 +2,7 @@ const fs = require('fs');
 const hbs = require('handlebars');
 const path = require('path');
 const pluralize = require('pluralize');
+const merge = require('merge');
 
 const config = require('./config.js');
 const dbModel = require('./model.js');
@@ -19,6 +20,7 @@ const argv = require('yargs')
   .alias('p', 'plural')
   .alias('o', 'outdir')
   .alias('c', 'component')
+  .alias('x', 'merge')
   .argv;
 
 // console.log(argv);
@@ -71,7 +73,9 @@ if (model === 'all') {
 
 if (!schema || model === 'schema') {
   dbModel.init(`127.0.0.1/${database}`).then(async () => {
+
     let res = null;
+    let sch = {};
 
     if (!res || !res.length) {
       res = await dbModel.find('core_store', {
@@ -79,12 +83,27 @@ if (!schema || model === 'schema') {
       });
 
       if (res && res.length) {
-        let sch = {}
-
         res.forEach(r => {
           let k = r.key.replace('plugin_content_manager_configuration_content_types::', '')
           let kp = k.split('.')[1] || k
-          sch[kp] = JSON.parse(r.value)
+          sch[kp] = JSON.parse(r.value);
+
+          // if (argv.merge && schema && schema[kp]) {
+          //   let ns = merge.recursive(sch[kp], schema[kp]);
+          //   console.log(JSON.stringify(ns.layouts,null,4));
+          //   dbModel.update(
+          //     'core_store',
+          //     {
+          //       value: JSON.stringify(ns)
+          //     },
+          //     {
+          //       key: r.key
+          //     }
+          //   );
+
+          //   console.log('saving ' + r.key);
+          // }
+          
         })
 
         // console.log(JSON.stringify(res, null, 4));
@@ -95,11 +114,14 @@ if (!schema || model === 'schema') {
         );
       }
     }
-  });
 
-  setTimeout(() => {
-    process.exit(0);
-  }, 1500);
+    return Promise.resolve();
+  }).
+  then(() => {
+    setTimeout(() => {
+      process.exit(0);
+    }, 1500);
+  })
   return;
 }
 

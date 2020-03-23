@@ -238,11 +238,18 @@ const find = async function(m, ctx) {
 
 const remove = async function(m, ctx) {
   let model = getModel(m);
-  return model.remove(ctx.query);
+  return await model.remove(ctx.query || ctx);
 };
+
+const update = async function(m, v, ctx) {
+  let model = getModel(m);
+  return await model.update(v, ctx.query || ctx);
+};
+
 
 module.exports = {
   init: initDB,
   find: find,
+  update: update,
   remove: remove
 };
