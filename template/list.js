@@ -10,7 +10,7 @@ import Toolbar from 'components/Toolbar';
 import { makeStyles } from '@material-ui/styles';
 // import EditIcon from '@material-ui/icons/Edit';
 
-import { schema } from './custom';
+import { schema, registry } from './custom';
 
 import debounce from 'debounce';
 
@@ -147,10 +147,10 @@ const DataList = withRouter(props => {
     })
   })
 
-  listFields.push({
-    name: '$actions',
-    label: 'Actions'
-  })
+  // listFields.push({
+  //   name: '$actions',
+  //   label: 'Actions'
+  // })
 
   const onAddClick = (evt, p) => {
     props.history.push(`/{{model}}`);
